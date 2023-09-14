@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>500 - Internal Server Error</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: #e74c3c;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #c0392b;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Oops! 500</h1>
+    <p>Something went wrong on our end.</p>
+    <p class="error-message"><%= errorMessage %></p>
+    <p>Don't worry, we're on it. Meanwhile, you can:</p>
+    <a href="/">Go to Home</a>
+</div>
+</body>
+</html>
