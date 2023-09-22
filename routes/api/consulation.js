@@ -14,14 +14,36 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-router.get('/consultations',async (req,res) =>{
-    try{
-        let consultations = await Consultation.find({})
-        return res.status(200).json(consultations)
-    }catch (error){
-        return res.status(500).send(error.message)
+router.get('/consultations', async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) || 1; // Get the requested page (default to 1 if not provided)
+      const limit = parseInt(req.query.limit) || 10; // Get the number of items per page (default to 10 if not provided)
+  
+      const skip = (page - 1) * limit; // Calculate the number of documents to skip
+  
+      // Query the database to retrieve a page of consultations
+      const consultations = await Consultation.find({})
+        .skip(skip)
+        .limit(limit)
+        .exec();
+  
+      // Count the total number of consultations for pagination information
+      const totalConsultations = await Consultation.countDocuments();
+  
+      // Calculate total pages based on the limit
+      const totalPages = Math.ceil(totalConsultations / limit);
+  
+      // Response with the paginated results and pagination information
+      return res.status(200).json({
+        consultations,
+        totalPages,
+        currentPage: page,
+        totalItems: totalConsultations,
+      });
+    } catch (error) {
+      return res.status(500).send(error.message);
     }
-})
+  });
 
 router.post('/consultations',upload.single('image'),async (req,res) =>{
     try {
