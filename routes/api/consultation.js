@@ -29,6 +29,7 @@ router.post('/consultations',upload.single('image'),async (req,res) =>{
         console.log(req.body)
         console.log(req.file)
         if(!req.file){
+            console.log('no file specified');
             return res.status(400).send("Image must be provided")
         }
 
