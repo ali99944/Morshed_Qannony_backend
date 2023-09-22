@@ -5,8 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nordic Admin</title>
+    <title>Nordic Test</title>
     <style>
+
+:root {
+  --background-color1: #fafaff;
+  --background-color2: #ffffff;
+  --background-color3: #ededed;
+  --background-color4: #cad7fda4;
+  --primary-color: #4b49ac;
+  --secondary-color: #0c007d;
+  --Border-color: #3f0097;
+  --one-use-color: #3f0097;
+  --two-use-color: #5500cb;
+}
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -17,15 +30,10 @@
         header {
             background-color: #007bff;
             color: white;
-            padding: 10px;
+            padding: 8px;
             text-align: center;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
 
         .welcome-message {
             font-size: 24px;
@@ -40,23 +48,24 @@
         }
 
         .stat-card {
-            background-color: white;
+            background-color: #209873;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             padding: 20px;
             flex: 1;
-            text-align: center;
         }
 
-        .stat-card h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+        
+
 
         .notifications {
             background-color: #f5f5f5;
             border-radius: 8px;
             padding: 20px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .notification-item {
@@ -86,9 +95,9 @@
         .quick-link-item {
             background-color: #007bff;
             color: white;
-            padding: 15px 30px;
+            padding: 12px;
             border-radius: 8px;
-            margin-right: 10px;
+            margin-right: 8px;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
@@ -97,47 +106,203 @@
 
         .quick-link-item:hover {
             background-color: #0056b3;
+            color: goldenrod
+        }
+
+        .stat-card{
+            background-color: #5601cc;
+            color: white;
+            font-size: 24px;
         }
 
 
+        .ks{
+            display: flex;
+        }
+
+        #violationsFilter {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .ks i{
+            font-size: 40px !important;
+        }
+
+        .ks > *{
+            flex-grow: 1;
+        }
+
+        .ks > :first-child{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ks > :last-child{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topic {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+ 
+.topic-heading {
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.box {
+  height: 120px;
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.box:hover {
+  transform: scale(1.08);
+}
+ 
+.box:nth-child(1) {
+  background-color: var(--one-use-color);
+}
+.box:nth-child(2) {
+  background-color: var(--two-use-color);
+}
+.box:nth-child(3) {
+  background-color: var(--one-use-color);
+}
+.box:nth-child(4) {
+  background-color: var(--two-use-color);
+}
+
+.box:nth-child(5){
+    background-color: var(--one-use-color);
+}
+ 
+.box img {
+  height: 50px;
+}
+.box .text {
+  color: white;
+}
+
+.chart-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 8px;
+    width: 100% !important;
+}
+
+#chart{
+    width:100% !important
+}
+
+svg{
+    width: 100% !important;
+}
+
+.chart-header{
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+
+.tick{
+    color:black
+}
+.wrapper{
+    width:100% !important;
+    padding: 12px;
+}
+
     </style>
+
+<script src="https://d3js.org/d3.v6.js"></script>
+
 </head>
 <body>
-<header>
-    <h1>Welcome Admin</h1>
-</header>
-<div class="container">
-    <div class="welcome-message">Hello, Admin!</div>
+<%- include('./components/navbar') %>
+<div class="mt-4"></div>
+<div class="wrapper">
+    <div class="welcome-message">Hei, Admin!</div>
 
-    <div class="statistics">
-        <div class="stat-card" style="margin-right: 12px">
-            <h2>Total Lawyers</h2>
-            <span>1500</span>
-        </div>
-        <div class="stat-card">
-            <h2>Total Consultants</h2>
-            <span>3000</span>
-        </div>
-    </div>
+    <div class="box-container">
+ 
+        <div class="box box1">
+            <div class="text">
+                <h2 class="topic-heading" id="vio-num">-</h2>
+                <h2 class="topic">Countries</h2>
+            </div>
 
-    <div class="notifications">
-        <div class="notification-item">
-            <img src="user-avatar.png" alt="User Avatar">
-            <span>New Consultant Recieved - John Doe</span>
+            <img src=
+"/images/violations.png"
+                alt="Views">
         </div>
-        <!-- <div class="notification-item">
-            <img src="order-icon.png" alt="Order Icon">
-            <span>New order received - Order #12345</span>
-        </div> -->
-        <!-- Add more notification items here -->
-    </div>
 
+        <div class="box box2">
+            <div class="text">
+                <h2 class="topic-heading" id="pdf-num">-</h2>
+                <h2 class="topic">Consulations</h2>
+            </div>
+
+            <img src=
+"/images/pdfs.png"
+                 alt="likes">
+        </div>
+
+        <div class="box box3">
+            <div class="text">
+                <h2 class="topic-heading" id="user-num">-</h2>
+                <h2 class="topic">Users</h2>
+            </div>
+
+            <img src=
+"/images/users.png"
+                alt="comments">
+        </div>
+
+
+
+    <div class="container">
     <div class="quick-links">
-        <a href="/consulations" class="quick-link-item">View Consultants</a>
-        <a href="/countries" class="quick-link-item">View Countries</a>
-        <a href="/lawyers" class="quick-link-item">View Lawyers</a>
+        <a href="/maps" class="quick-link-item">Kart</a>
+        <a href="/postals" class="quick-link-item">Send per post</a>
+        <a href="/scans" class="quick-link-item">Makulering</a>
         <!-- Add more quick links as needed -->
     </div>
 </div>
+</div>
+
+
 </body>
 </html>
